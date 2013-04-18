@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0958423171F72AB00788DEC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958422171F72AB00788DEC /* CoreBluetooth.framework */; };
+		F0958425171F732300788DEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958424171F732200788DEC /* QuartzCore.framework */; };
+		F0958427171F734F00788DEC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958426171F734F00788DEC /* CoreData.framework */; };
 		F0F5DEF9171CCF95005EA046 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEF8171CCF95005EA046 /* UIKit.framework */; };
 		F0F5DEFB171CCF95005EA046 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEFA171CCF95005EA046 /* Foundation.framework */; };
 		F0F5DEFD171CCF95005EA046 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEFC171CCF95005EA046 /* CoreGraphics.framework */; };
@@ -26,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0958422171F72AB00788DEC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		F0958424171F732200788DEC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F0958426171F734F00788DEC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F0F5DEF5171CCF95005EA046 /* StressSensor1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressSensor1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F5DEF8171CCF95005EA046 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0F5DEFA171CCF95005EA046 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,6 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0958427171F734F00788DEC /* CoreData.framework in Frameworks */,
+				F0958425171F732300788DEC /* QuartzCore.framework in Frameworks */,
+				F0958423171F72AB00788DEC /* CoreBluetooth.framework in Frameworks */,
 				F0F5DEF9171CCF95005EA046 /* UIKit.framework in Frameworks */,
 				F0F5DEFB171CCF95005EA046 /* Foundation.framework in Frameworks */,
 				F0F5DEFD171CCF95005EA046 /* CoreGraphics.framework in Frameworks */,
@@ -64,6 +73,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0958428171F73A100788DEC /* Images, logos, etc */ = {
+			isa = PBXGroup;
+			children = (
+				F0F5DF16171CCF95005EA046 /* first.png */,
+				F0F5DF18171CCF95005EA046 /* first@2x.png */,
+				F0F5DF1D171CCF95005EA046 /* second.png */,
+				F0F5DF1F171CCF95005EA046 /* second@2x.png */,
+				F0F5DF0A171CCF95005EA046 /* Default.png */,
+				F0F5DF0C171CCF95005EA046 /* Default@2x.png */,
+				F0F5DF0E171CCF95005EA046 /* Default-568h@2x.png */,
+			);
+			name = "Images, logos, etc";
+			sourceTree = "<group>";
+		};
 		F0F5DEEC171CCF95005EA046 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +107,9 @@
 		F0F5DEF7171CCF95005EA046 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0958426171F734F00788DEC /* CoreData.framework */,
+				F0958424171F732200788DEC /* QuartzCore.framework */,
+				F0958422171F72AB00788DEC /* CoreBluetooth.framework */,
 				F0F5DEF8171CCF95005EA046 /* UIKit.framework */,
 				F0F5DEFA171CCF95005EA046 /* Foundation.framework */,
 				F0F5DEFC171CCF95005EA046 /* CoreGraphics.framework */,
@@ -99,12 +125,8 @@
 				F0F5DF10171CCF95005EA046 /* MainStoryboard.storyboard */,
 				F0F5DF13171CCF95005EA046 /* StressSensorFirstViewController.h */,
 				F0F5DF14171CCF95005EA046 /* StressSensorFirstViewController.m */,
-				F0F5DF16171CCF95005EA046 /* first.png */,
-				F0F5DF18171CCF95005EA046 /* first@2x.png */,
 				F0F5DF1A171CCF95005EA046 /* StressSensorSecondViewController.h */,
 				F0F5DF1B171CCF95005EA046 /* StressSensorSecondViewController.m */,
-				F0F5DF1D171CCF95005EA046 /* second.png */,
-				F0F5DF1F171CCF95005EA046 /* second@2x.png */,
 				F0F5DEFF171CCF95005EA046 /* Supporting Files */,
 			);
 			path = StressSensor1;
@@ -113,13 +135,11 @@
 		F0F5DEFF171CCF95005EA046 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F0958428171F73A100788DEC /* Images, logos, etc */,
 				F0F5DF00171CCF95005EA046 /* StressSensor1-Info.plist */,
 				F0F5DF01171CCF95005EA046 /* InfoPlist.strings */,
 				F0F5DF04171CCF95005EA046 /* main.m */,
 				F0F5DF06171CCF95005EA046 /* StressSensor1-Prefix.pch */,
-				F0F5DF0A171CCF95005EA046 /* Default.png */,
-				F0F5DF0C171CCF95005EA046 /* Default@2x.png */,
-				F0F5DF0E171CCF95005EA046 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -288,7 +308,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressSensor1/StressSensor1-Prefix.pch";
 				INFOPLIST_FILE = "StressSensor1/StressSensor1-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -300,7 +320,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StressSensor1/StressSensor1-Prefix.pch";
 				INFOPLIST_FILE = "StressSensor1/StressSensor1-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
