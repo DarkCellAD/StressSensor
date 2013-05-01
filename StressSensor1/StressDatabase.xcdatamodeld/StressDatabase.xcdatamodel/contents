@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DayStress" representedClassName="DayStress" syncable="YES">
+        <attribute name="avgHeartRate" attributeType="Double" syncable="YES"/>
+        <attribute name="avgSkinResp" attributeType="Double" syncable="YES"/>
+        <attribute name="dataPoints" attributeType="Integer 64" syncable="YES"/>
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <relationship name="minutes" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="MinuteStress" inverseName="day" inverseEntity="MinuteStress" syncable="YES"/>
+        <relationship name="month" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MonthStress" inverseName="days" inverseEntity="MonthStress" syncable="YES"/>
+    </entity>
+    <entity name="MinuteStress" representedClassName="MinuteStress" syncable="YES">
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="heartRate" attributeType="Double" syncable="YES"/>
+        <attribute name="skinResp" attributeType="Double" syncable="YES"/>
+        <relationship name="day" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="DayStress" inverseName="minutes" inverseEntity="DayStress" syncable="YES"/>
+    </entity>
+    <entity name="MonthStress" representedClassName="MonthStress" syncable="YES">
+        <attribute name="avgHeartRate" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="avgSkinResp" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="dataPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <relationship name="days" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="DayStress" inverseName="month" inverseEntity="DayStress" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DayStress" positionX="-18" positionY="-36" width="128" height="135"/>
+        <element name="MinuteStress" positionX="-225" positionY="-37" width="128" height="105"/>
+        <element name="MonthStress" positionX="232" positionY="-36" width="128" height="120"/>
+    </elements>
+</model>
