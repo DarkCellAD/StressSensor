@@ -84,19 +84,49 @@
 
 
 #pragma mark - Bluetooth Core delegate methods
--(void) bleDidReceiveData:(unsigned char *)data length:(int)length
+-(void) bleDidReceiveData:(unsigned char *) data length:(int) length
 {
     NSLog(@"receiving ....");
     
-    NSData *d = [NSData dataWithBytes:data length:length];
-    NSString *s = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
-    NSArray *dataInput = [s componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    //NSLog(@"Length: %d", length);
     
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    // parse data, all commands are in 3-byte
+    UInt16 BPM;
+    UInt16 SRR;
     
-    NSNumber *heartRate = [f numberFromString:[dataInput objectAtIndex:0] ];
-    NSNumber *skinResp = [f numberFromString:[dataInput objectAtIndex:1] ];
+    for (int i = 0; i < length; i+=3)
+    {
+        //NSLog(@"0x%02X, 0x%02X, 0x%02X", data[i], data[i+1], data[i+2]);
+        
+        if (data[i] == 0x0A)
+        {
+            BPM = data[i+2] | data[i+1] << 8;
+            //NSLog(@"Heart: %hu",BPM);
+        }
+        else if (data[i] == 0x0B)
+        {
+            
+            SRR = data[i+2] | data[i+1] << 8;
+            //NSLog(@"Skin: %hu",SRR);
+        }
+    }
+    
+
+    
+
+    
+//    NSData *d = [NSData dataWithBytes:data length:length];
+//    NSString *s = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",s);
+//    NSArray *dataInput = [s componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    
+//    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+//    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+//    NSNumber *heartRate = [f numberFromString:[dataInput objectAtIndex:0] ];
+//    NSNumber *skinResp = [f numberFromString:[dataInput objectAtIndex:1] ];
+    NSNumber *heartRate = [NSNumber numberWithUnsignedShort:BPM] ;
+    NSNumber *skinResp = [NSNumber numberWithUnsignedShort:SRR];
     NSLog(@"heart: %@     skin: %@",heartRate, skinResp);
     
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -253,7 +283,9 @@
 
     
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didReceived" object:self];
     [self saveContext];
+     
 
 }
 
@@ -264,6 +296,7 @@
 
 -(void) bleDidConnect
 {
+    NSLog(@"didConnect called");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didConnect" object:self];
 }
 
@@ -292,6 +325,10 @@
     if(bleShield.peripherals.count > 0)
     {
         [bleShield connectPeripheral:[bleShield.peripherals objectAtIndex:0]];
+    }
+    else
+    {
+        [self bleDidDisconnect];
     }
 }
 

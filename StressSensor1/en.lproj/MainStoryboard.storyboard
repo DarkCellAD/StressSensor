@@ -71,23 +71,84 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="y3R-c1-e1m">
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="Re5-nw-FC5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="averages" id="Re5-nw-FC5" customClass="StressSensorTVCellAverages">
                                         <rect key="frame" x="0.0" y="54" width="728" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="1" width="638" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="average Heartrate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-rM-yOS">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" type="user" id="6jq-7B-hx0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eO0-9e-XoH">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" type="user" id="WBy-CM-P53"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstItem="eO0-9e-XoH" firstAttribute="centerY" secondItem="Re5-nw-FC5" secondAttribute="centerY" type="default" id="3NM-C7-dTm"/>
+                                            <constraint firstItem="7Rq-rM-yOS" firstAttribute="leading" secondItem="Re5-nw-FC5" secondAttribute="leading" constant="60" type="user" id="Kuz-Fp-Fe9"/>
+                                            <constraint firstItem="eO0-9e-XoH" firstAttribute="baseline" secondItem="7Rq-rM-yOS" secondAttribute="baseline" type="default" id="aFa-5w-rgO"/>
+                                            <constraint firstItem="eO0-9e-XoH" firstAttribute="leading" secondItem="7Rq-rM-yOS" secondAttribute="trailing" constant="25" type="user" id="v2r-XP-1nw"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="leftLabel" destination="7Rq-rM-yOS" id="HQ7-Cx-4Jw"/>
+                                            <outlet property="rightLabel" destination="eO0-9e-XoH" id="0OI-70-qmt"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="gwC-IG-pWi">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="notes" rowHeight="44" id="0TQ-4z-gSl" customClass="StressSensorTVCellText">
                                         <rect key="frame" x="0.0" y="99" width="728" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="638" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="average Heartrate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnh-Ow-RjJ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" type="user" id="mN8-3o-Dlz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygd-Sl-LjJ">
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="JZp-aZ-eLQ"/>
+                                                    </constraints>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ygd-Sl-LjJ" firstAttribute="top" secondItem="wnh-Ow-RjJ" secondAttribute="top" type="default" id="HdH-s1-m2i"/>
+                                            <constraint firstItem="wnh-Ow-RjJ" firstAttribute="leading" secondItem="0TQ-4z-gSl" secondAttribute="leading" constant="60" id="LzB-89-kBW"/>
+                                            <constraint firstAttribute="centerY" secondItem="wnh-Ow-RjJ" secondAttribute="centerY" type="user" id="lw5-sa-KAx"/>
+                                            <constraint firstAttribute="centerY" secondItem="ygd-Sl-LjJ" secondAttribute="centerY" type="user" id="q3X-BO-S8B"/>
+                                            <constraint firstItem="ygd-Sl-LjJ" firstAttribute="leading" secondItem="wnh-Ow-RjJ" secondAttribute="trailing" constant="25" type="user" id="xyy-es-4RW"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textView" destination="ygd-Sl-LjJ" id="8Cu-nq-0Qt"/>
+                                            <outlet property="titleLabel" destination="wnh-Ow-RjJ" id="nJc-Ve-BmM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -105,8 +166,8 @@
                             <constraint firstAttribute="bottom" secondItem="y3R-c1-e1m" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="X6T-kg-kUC"/>
                             <constraint firstAttribute="trailing" secondItem="poT-t6-iT1" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="cMF-zh-v7P"/>
                             <constraint firstItem="y3R-c1-e1m" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="eJl-5h-hSU"/>
-                            <constraint firstAttribute="trailing" secondItem="nJ1-22-aWs" secondAttribute="trailing" type="user" id="fRd-74-ZqQ"/>
-                            <constraint firstAttribute="bottom" secondItem="nJ1-22-aWs" secondAttribute="bottom" type="user" id="hUL-ez-EHg"/>
+                            <constraint firstAttribute="trailing" secondItem="nJ1-22-aWs" secondAttribute="trailing" constant="600" type="user" id="fRd-74-ZqQ"/>
+                            <constraint firstAttribute="bottom" secondItem="nJ1-22-aWs" secondAttribute="bottom" constant="400" type="user" id="hUL-ez-EHg"/>
                             <constraint firstItem="poT-t6-iT1" firstAttribute="top" secondItem="17" secondAttribute="top" constant="20" symbolic="YES" type="user" id="p8A-HR-CbU"/>
                         </constraints>
                     </view>

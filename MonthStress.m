@@ -2,7 +2,7 @@
 //  MonthStress.m
 //  StressSensor1
 //
-//  Created by David Dreher on 19.04.13.
+//  Created by David Dreher on 02.05.13.
 //  Copyright (c) 2013 edu.ASU. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @dynamic avgSkinResp;
 @dynamic dataPoints;
 @dynamic date;
+@dynamic notes;
 @dynamic days;
 
 @end

@@ -2,7 +2,7 @@
 //  MonthStress.h
 //  StressSensor1
 //
-//  Created by David Dreher on 19.04.13.
+//  Created by David Dreher on 02.05.13.
 //  Copyright (c) 2013 edu.ASU. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * avgSkinResp;
 @property (nonatomic, retain) NSNumber * dataPoints;
 @property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSSet *days;
 @end
 

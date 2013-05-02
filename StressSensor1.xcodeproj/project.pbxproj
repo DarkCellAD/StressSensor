@@ -11,6 +11,10 @@
 		F0958425171F732300788DEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958424171F732200788DEC /* QuartzCore.framework */; };
 		F0958427171F734F00788DEC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958426171F734F00788DEC /* CoreData.framework */; };
 		F0AF14A1172DDB3E00FDC18B /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF149F172DDB3E00FDC18B /* BLE.m */; };
+		F0AF14D51732D22000FDC18B /* StressSensorTVCellText.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF14D41732D22000FDC18B /* StressSensorTVCellText.m */; };
+		F0AF150D1732DB5500FDC18B /* StressSensorTVCellAverages.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF150C1732DB5500FDC18B /* StressSensorTVCellAverages.m */; };
+		F0AF15101733022E00FDC18B /* DayStress.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF150F1733022E00FDC18B /* DayStress.m */; };
+		F0AF15161733026B00FDC18B /* MonthStress.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF15151733026B00FDC18B /* MonthStress.m */; };
 		F0AF7D871720D49700901983 /* StressDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D851720D49700901983 /* StressDatabase.xcdatamodeld */; };
 		F0AF7DDB1720D87100901983 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AF7DDA1720D87100901983 /* libCorePlot-CocoaTouch.a */; };
 		F0AF7DDE1720E12C00901983 /* StressSensorConnectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DDD1720E12C00901983 /* StressSensorConnectButton.m */; };
@@ -19,8 +23,6 @@
 		F0AF7DE71720E54500901983 /* StressSensorSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DE51720E54400901983 /* StressSensorSecondViewController.m */; };
 		F0AF7DEA1721C53A00901983 /* StressSensorTestData.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DE91721C53900901983 /* StressSensorTestData.m */; };
 		F0AF7DED1721D5A000901983 /* MinuteStress.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DEC1721D5A000901983 /* MinuteStress.m */; };
-		F0AF7DF01721D6F900901983 /* DayStress.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DEF1721D6F900901983 /* DayStress.m */; };
-		F0AF7DF31721D70B00901983 /* MonthStress.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DF21721D70A00901983 /* MonthStress.m */; };
 		F0F5DEF9171CCF95005EA046 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEF8171CCF95005EA046 /* UIKit.framework */; };
 		F0F5DEFB171CCF95005EA046 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEFA171CCF95005EA046 /* Foundation.framework */; };
 		F0F5DEFD171CCF95005EA046 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEFC171CCF95005EA046 /* CoreGraphics.framework */; };
@@ -44,6 +46,14 @@
 		F0AF149E172DDB3E00FDC18B /* BLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
 		F0AF149F172DDB3E00FDC18B /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
 		F0AF14A0172DDB3E00FDC18B /* BLEDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDefines.h; sourceTree = "<group>"; };
+		F0AF14D31732D22000FDC18B /* StressSensorTVCellText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorTVCellText.h; sourceTree = "<group>"; };
+		F0AF14D41732D22000FDC18B /* StressSensorTVCellText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorTVCellText.m; sourceTree = "<group>"; };
+		F0AF150B1732DB5500FDC18B /* StressSensorTVCellAverages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorTVCellAverages.h; sourceTree = "<group>"; };
+		F0AF150C1732DB5500FDC18B /* StressSensorTVCellAverages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorTVCellAverages.m; sourceTree = "<group>"; };
+		F0AF150E1733022D00FDC18B /* DayStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayStress.h; sourceTree = "<group>"; };
+		F0AF150F1733022E00FDC18B /* DayStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayStress.m; sourceTree = "<group>"; };
+		F0AF15141733026B00FDC18B /* MonthStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthStress.h; path = ../MonthStress.h; sourceTree = "<group>"; };
+		F0AF15151733026B00FDC18B /* MonthStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthStress.m; path = ../MonthStress.m; sourceTree = "<group>"; };
 		F0AF7D861720D49700901983 /* StressDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StressDatabase.xcdatamodel; sourceTree = "<group>"; };
 		F0AF7D901720D87100901983 /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
 		F0AF7D911720D87100901983 /* CPTAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotation.h; sourceTree = "<group>"; };
@@ -132,10 +142,6 @@
 		F0AF7DE91721C53900901983 /* StressSensorTestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorTestData.m; sourceTree = "<group>"; };
 		F0AF7DEB1721D5A000901983 /* MinuteStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinuteStress.h; sourceTree = "<group>"; };
 		F0AF7DEC1721D5A000901983 /* MinuteStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinuteStress.m; sourceTree = "<group>"; };
-		F0AF7DEE1721D6F900901983 /* DayStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayStress.h; sourceTree = "<group>"; };
-		F0AF7DEF1721D6F900901983 /* DayStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayStress.m; sourceTree = "<group>"; };
-		F0AF7DF11721D70A00901983 /* MonthStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthStress.h; path = ../MonthStress.h; sourceTree = "<group>"; };
-		F0AF7DF21721D70A00901983 /* MonthStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthStress.m; path = ../MonthStress.m; sourceTree = "<group>"; };
 		F0F5DEF5171CCF95005EA046 /* StressSensor1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressSensor1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F5DEF8171CCF95005EA046 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0F5DEFA171CCF95005EA046 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -202,6 +208,10 @@
 			isa = PBXGroup;
 			children = (
 				F0F5DF10171CCF95005EA046 /* MainStoryboard.storyboard */,
+				F0AF150B1732DB5500FDC18B /* StressSensorTVCellAverages.h */,
+				F0AF150C1732DB5500FDC18B /* StressSensorTVCellAverages.m */,
+				F0AF14D31732D22000FDC18B /* StressSensorTVCellText.h */,
+				F0AF14D41732D22000FDC18B /* StressSensorTVCellText.m */,
 				F0AF7DDC1720E12C00901983 /* StressSensorConnectButton.h */,
 				F0AF7DDD1720E12C00901983 /* StressSensorConnectButton.m */,
 			);
@@ -227,12 +237,12 @@
 			isa = PBXGroup;
 			children = (
 				F0AF7D851720D49700901983 /* StressDatabase.xcdatamodeld */,
+				F0AF150E1733022D00FDC18B /* DayStress.h */,
+				F0AF150F1733022E00FDC18B /* DayStress.m */,
 				F0AF7DEB1721D5A000901983 /* MinuteStress.h */,
 				F0AF7DEC1721D5A000901983 /* MinuteStress.m */,
-				F0AF7DEE1721D6F900901983 /* DayStress.h */,
-				F0AF7DEF1721D6F900901983 /* DayStress.m */,
-				F0AF7DF11721D70A00901983 /* MonthStress.h */,
-				F0AF7DF21721D70A00901983 /* MonthStress.m */,
+				F0AF15141733026B00FDC18B /* MonthStress.h */,
+				F0AF15151733026B00FDC18B /* MonthStress.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -464,9 +474,11 @@
 				F0AF7DE71720E54500901983 /* StressSensorSecondViewController.m in Sources */,
 				F0AF7DEA1721C53A00901983 /* StressSensorTestData.m in Sources */,
 				F0AF7DED1721D5A000901983 /* MinuteStress.m in Sources */,
-				F0AF7DF01721D6F900901983 /* DayStress.m in Sources */,
-				F0AF7DF31721D70B00901983 /* MonthStress.m in Sources */,
 				F0AF14A1172DDB3E00FDC18B /* BLE.m in Sources */,
+				F0AF14D51732D22000FDC18B /* StressSensorTVCellText.m in Sources */,
+				F0AF150D1732DB5500FDC18B /* StressSensorTVCellAverages.m in Sources */,
+				F0AF15101733022E00FDC18B /* DayStress.m in Sources */,
+				F0AF15161733026B00FDC18B /* MonthStress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

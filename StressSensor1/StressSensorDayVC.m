@@ -8,6 +8,7 @@
 
 #import "StressSensorDayVC.h"
 #import "MinuteStress.h"
+#import "DayStress.h"
 
 @interface StressSensorDayVC ()
 {
@@ -34,6 +35,11 @@
     NSUInteger y2Max;
     NSUInteger y2minorIncrement;
     NSUInteger y2majorIncrement;
+    
+    BOOL firstTableRun;
+    
+    DayStress *currentDayStress;
+    StressSensorTVCellText *prototypeNoteCell;
 
     
 
@@ -58,7 +64,9 @@
     self.managedObjectContext = [appDelegate managedObjectContext];
     
     _tableView.delegate=self;
+    _tableView.dataSource = self;
     _tableView.layer.cornerRadius = 10.0f;
+    firstTableRun=YES;
     _mainPlotView.layer.cornerRadius = 10.0f;
     
     
@@ -81,6 +89,9 @@
     y2majorIncrement = 100;
 
     [self setPlotData];
+    [self setupCurrentDayStress];
+    //[self setupPrototypeNoteCell];
+    //prototypeNoteCell = [self pro]
 
 	// Do any additional setup after loading the view.
 }
@@ -91,6 +102,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnect) name:@"didConnect" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnect) name:@"didDisconnect" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshOnReceiving) name:@"didReceived" object:nil];
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connecting" forState:UIControlStateSelected];
     
@@ -240,7 +252,7 @@
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
-    NSLog(@"datapoints: %lu",(unsigned long)[[_fetchedResultsController fetchedObjects] count]);
+    //NSLog(@"datapoints: %lu",(unsigned long)[[_fetchedResultsController fetchedObjects] count]);
     return [[_fetchedResultsController fetchedObjects] count];
 }
 
@@ -581,8 +593,7 @@
     self.refreshButtonOutlet.backgroundColor=[UIColor whiteColor];
     self.refreshButtonOutlet.selected=TRUE;
     
-    [self setPlotData];
-    [self initPlot];
+    [self refreshOnReceiving];
     
     self.refreshButtonOutlet.selected=FALSE;
     self.refreshButtonOutlet.backgroundColor=[UIColor scrollViewTexturedBackgroundColor];
@@ -595,4 +606,307 @@
     self.connectButton.selected=TRUE;
     [self.spinner startAnimating];
 }
+
+- (void)refreshOnReceiving
+{
+    [self setupCurrentDayStress];
+    [_tableView reloadData];
+    [self setPlotData];
+    [self initPlot];
+
+}
+
+
+
+#pragma mark - TableView delegate methods
+
+
+- (CGFloat)tableView:(UITableView  *)tableView heightForRowAtIndexPath:(NSIndexPath  *)indexPath {
+    
+    int height;
+    if (indexPath.row == 2)
+    {
+        UIFont * FontSize = [UIFont systemFontOfSize:14.0];
+        CGSize textSize = [currentDayStress.notes sizeWithFont:FontSize constrainedToSize:CGSizeMake(320, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+        
+        return textSize.height+15;
+    
+//                
+//        //StressSensorTVCellText *cell = (StressSensorTVCellText*)[tableView cellForRowAtIndexPath:indexPath];
+//        UITextView *textView = prototypeNoteCell.textView;
+//        [prototypeNoteCell setTextViewSize:textView];
+//        height = textView.frame.size.height + 12;
+//        if (height < 44) { // minimum height of 44
+//            height = 44;
+//            [textView setFrame:CGRectMake(textView.frame.origin.x,
+//                                          textView.frame.origin.y,
+//                                          textView.frame.size.width,
+//                                          44-12)];
+//        }
+
+    }
+    else
+    {
+        height = 45;
+    }
+    
+    return (CGFloat)height;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSString *avgHR;
+//    NSString *avgSR;
+//
+//    if (indexPath.row<2) {
+//        // Looking for Day entity
+//        DayStress *DayStressadd=nil;
+//        NSDate *today=[NSDate date];
+//        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//        NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
+//        [components setHour:0];
+//        [components setMinute:0];
+//        NSDate *startDate = [calendar dateFromComponents:components];
+//        [components setHour:23];
+//        [components setMinute:59];
+//        NSDate *endDate = [calendar dateFromComponents:components];
+//        
+//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//        NSPredicate *dayPredicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)", startDate, endDate];
+//        [fetchRequest setPredicate:dayPredicate];
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"DayStress" inManagedObjectContext:managedObjectContext];
+//        [fetchRequest setEntity:entity];
+//        
+//        
+//        NSError *error = nil;
+//        NSUInteger count = [managedObjectContext countForFetchRequest:fetchRequest error:&error];
+//        
+//               
+//        if (count==0)
+//        {
+//            avgHR = [NSString stringWithFormat:@"No data available"];
+//            avgSR = [NSString stringWithFormat:@"No data available"];
+//            
+//        }
+//        else if (count==1)
+//        {
+//            NSError *error2 = nil;
+//            NSArray * results = [managedObjectContext executeFetchRequest:fetchRequest error:&error2];
+//            if (error2)
+//            {
+//                NSLog(@"Unresolved error %@, %@", error2, [error2 userInfo]);
+//                abort();
+//            }
+//            DayStressadd = [results objectAtIndex:0];
+//            avgHR = [NSString stringWithFormat:@"%@",DayStressadd.avgHeartRate];
+//            avgSR = [NSString stringWithFormat:@"%@",DayStressadd.avgSkinResp];
+//            
+//        }
+//
+//    }
+//    
+    
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            StressSensorTVCellAverages *cell = (StressSensorTVCellAverages*) [_tableView dequeueReusableCellWithIdentifier:@"averages" forIndexPath:indexPath];
+            cell.leftLabel.text = @"Average Heartrate";
+            cell.rightLabel.text = [NSString stringWithFormat:@"%.1f",[currentDayStress.avgHeartRate floatValue]];
+            return cell;
+            break;
+        }
+        case 1:
+        {
+            StressSensorTVCellAverages *cell = (StressSensorTVCellAverages*) [_tableView dequeueReusableCellWithIdentifier:@"averages" forIndexPath:indexPath];
+            cell.leftLabel.text = @"Average Skin Response";
+            cell.rightLabel.text = [NSString stringWithFormat:@"%.1f",[currentDayStress.avgSkinResp floatValue]];
+            return cell;
+            break;
+        }
+        case 2:
+        {
+            StressSensorTVCellText *cell = (StressSensorTVCellText*) [_tableView dequeueReusableCellWithIdentifier:@"notes" forIndexPath:indexPath];
+            cell.titleLabel.text = @"Notes";
+            cell.myTableView = tableView;
+            cell.textView.delegate = self;
+            cell.textView.text = currentDayStress.notes;
+            return cell;
+            break;
+        }
+            
+        default:
+        {
+            UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"averages" forIndexPath:indexPath];
+            return cell;
+
+            break;
+        }
+    }
+    
+    
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return NO;
+}
+
+//- (CGSize)textViewSize:(UITextView*)textView {
+//    float fudgeFactor = 16.0;
+//    CGSize tallerSize = CGSizeMake(textView.frame.size.width-fudgeFactor, 9999);
+//    NSString *testString = @" ";
+//    if ([textView.text length] > 0) {
+//        testString = textView.text;
+//    }
+//    CGSize stringSize = [testString sizeWithFont:textView.font constrainedToSize:tallerSize lineBreakMode:NSLineBreakByWordWrapping];
+//    return stringSize;
+//}
+//
+//// based on the proper text view size, sets the UITextView's frame
+//- (void) setTextViewSize:(UITextView*)textView {
+//    CGSize stringSize = [self textViewSize:textView];
+//    if (stringSize.height != textView.frame.size.height) {
+//        [textView setFrame:CGRectMake(textView.frame.origin.x,
+//                                      textView.frame.origin.y,
+//                                      textView.frame.size.width,
+//                                      stringSize.height+10)];  // +10 to allow for the space above the text itself
+//    }
+//}
+//
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSLog(@"textview Changed");
+    currentDayStress.notes = textView.text;
+    
+    CGFloat numberOfLines = (textView.contentSize.height / textView.font.lineHeight) - 1;
+    
+    CGFloat height = 44.0;
+    height += (textView.font.lineHeight * (numberOfLines - 1));
+    
+    CGRect textViewFrame = [textView frame];
+    textViewFrame.size.height = height - 10.0; //The 10 value is to retrieve the same height padding I inputed earlier when I initialized the UITextView
+    [textView setFrame:textViewFrame];
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    //[cellTextView setContentInset:UIEdgeInsetsZero];
+    
+//    [_tableView beginUpdates];
+//    [_tableView endUpdates];
+//    [self setupPrototypeNoteCell];
+//    [self setTextViewSize:textView]; // set proper text view size
+//    UIView *contentView = textView.superview;
+//    // (1) the padding above and below the UITextView should each be 6px, so UITextView's
+//    // height + 12 should equal the height of the UITableViewCell
+//    // (2) if they are not equal, then update the height of the UITableViewCell
+//    if ((textView.frame.size.height + 12.0f) != contentView.frame.size.height) {
+//        [_tableView beginUpdates];
+//        [_tableView endUpdates];
+//        
+//        [contentView setFrame:CGRectMake(0,
+//                                         0,
+//                                         contentView.frame.size.width,
+//                                         (textView.frame.size.height+12.0f))];
+//    }
+    StressSensorAppDelegate *appDelegate = (StressSensorAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate saveContext];
+
+}
+
+//- (void)setupPrototypeNoteCell
+//{
+//    prototypeNoteCell = (StressSensorTVCellText*) [_tableView dequeueReusableCellWithIdentifier:@"notes"];
+//    prototypeNoteCell.textView.delegate = self;
+//    prototypeNoteCell.textView.text = currentDayStress.notes;
+//    //[self textViewDidChange:prototypeNoteCell.textView];
+//    
+//    [self setTextViewSize:prototypeNoteCell.textView]; // set proper text view size
+//    UIView *contentView = prototypeNoteCell.textView.superview;
+//    // (1) the padding above and below the UITextView should each be 6px, so UITextView's
+//    // height + 12 should equal the height of the UITableViewCell
+//    // (2) if they are not equal, then update the height of the UITableViewCell
+//    if ((prototypeNoteCell.textView.frame.size.height + 12.0f) != contentView.frame.size.height) {
+//            [contentView setFrame:CGRectMake(0,
+//                                         0,
+//                                         contentView.frame.size.width,
+//                                         (prototypeNoteCell.textView.frame.size.height+12.0f))];
+//    }
+//
+//    
+//    
+//}
+
+
+- (void)setupCurrentDayStress
+{
+    NSDate *today=[NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
+    [components setHour:0];
+    [components setMinute:0];
+    NSDate *startDate = [calendar dateFromComponents:components];
+    [components setHour:23];
+    [components setMinute:59];
+    NSDate *endDate = [calendar dateFromComponents:components];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSPredicate *dayPredicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)", startDate, endDate];
+    [fetchRequest setPredicate:dayPredicate];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DayStress" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    
+    NSError *error = nil;
+    NSUInteger count = [managedObjectContext countForFetchRequest:fetchRequest error:&error];
+    
+    
+    if (count==0)
+    {
+        NSEntityDescription *daystressEntity = [NSEntityDescription entityForName:@"DayStress" inManagedObjectContext:managedObjectContext];
+
+        currentDayStress = (DayStress*)[[NSManagedObject alloc] initWithEntity:daystressEntity insertIntoManagedObjectContext:nil];
+        
+        //DayStressadd.date = [NSDate date];
+        currentDayStress.avgHeartRate = [NSNumber numberWithDouble:0];
+        currentDayStress.avgSkinResp = [NSNumber numberWithDouble:0];
+        currentDayStress.dataPoints = [NSNumber numberWithInt:0];
+        currentDayStress.notes =@"No data available";
+        
+        
+    }
+    else if (count==1)
+    {
+        NSError *error2 = nil;
+        NSArray * results = [managedObjectContext executeFetchRequest:fetchRequest error:&error2];
+        if (error2)
+        {
+            NSLog(@"Unresolved error %@, %@", error2, [error2 userInfo]);
+            abort();
+        }
+        currentDayStress = [results objectAtIndex:0];
+    }
+    
+    NSLog(@"average Heart: %@",currentDayStress.avgHeartRate );
+}
+
+
+
+
+
+
 @end
+
+

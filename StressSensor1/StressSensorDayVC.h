@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "StressSensorConnectButton.h"
+#import "StressSensorTVCellText.h"
+#import "StressSensorTVCellAverages.h"
 
-@interface StressSensorDayVC : UIViewController<UIPopoverControllerDelegate, CPTPlotDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface StressSensorDayVC : UIViewController <UIPopoverControllerDelegate, CPTPlotDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet CPTGraphHostingView *plotView;
