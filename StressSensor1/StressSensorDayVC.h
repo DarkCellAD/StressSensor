@@ -19,10 +19,8 @@
 @property (strong, nonatomic) IBOutlet UIView *mainPlotView;
 
 @property (strong, nonatomic) IBOutlet StressSensorConnectButton *connectButton;
-@property (strong, nonatomic) IBOutlet StressSensorConnectButton *refreshButtonOutlet;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-- (IBAction)refreshButtonAction:(id)sender;
 - (IBAction)connectButtonAction:(id)sender;
 - (IBAction)editButton:(id)sender;
 

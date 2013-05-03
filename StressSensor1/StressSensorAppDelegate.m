@@ -291,6 +291,7 @@
 
 - (void) bleDidDisconnect
 {
+    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didDisconnect" object:self];
 }
 

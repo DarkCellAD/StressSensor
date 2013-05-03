@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BLE.h"
+#import <AudioToolbox/AudioServices.h>
 
 @interface StressSensorAppDelegate : UIResponder <UIApplicationDelegate, BLEDelegate>
 {

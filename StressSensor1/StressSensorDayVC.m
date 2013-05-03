@@ -132,6 +132,7 @@
     self.connectButton.backgroundColor=[UIColor scrollViewTexturedBackgroundColor];
     [self.connectButton setTitle:@"Connected" forState:UIControlStateNormal];
     [self.spinner stopAnimating];
+    [self.view setNeedsDisplay];
 
 
     
@@ -143,6 +144,8 @@
     self.connectButton.backgroundColor=[UIColor scrollViewTexturedBackgroundColor];
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
     [self.spinner stopAnimating];
+    [self.view setNeedsDisplay];
+
 
 
 }
@@ -456,7 +459,9 @@
     x.tickDirection = CPTSignNegative;
     
     x.majorIntervalLength = [[NSDecimalNumber decimalNumberWithString:@"1*60*60"] decimalValue];
-    CPTPlotRange *xAxisRange=plotSpaceHR.xRange;
+    //CPTPlotRange *xAxisRange=plotSpaceHR.xRange;
+    
+    CPTPlotRange *xAxisRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(oneDay)];
     x.minorTicksPerInterval = 4;
     x.visibleRange=xAxisRange;
     x.orthogonalCoordinateDecimal=CPTDecimalFromString(@"0");
@@ -472,7 +477,7 @@
                                                                 [NSDecimalNumber numberWithInt:18*60*60],
                                                                 [NSDecimalNumber numberWithInt:21*60*60],
                                                                 [NSDecimalNumber numberWithInt:24*60*60],nil];
-    NSArray *xAxisLabels = [NSArray arrayWithObjects:@"3 AM", @"6 AM", @"9 AM", @"12PM", @"3 PM",@"6 PM",@"9 PM", @"12 AM", nil];
+    NSArray *xAxisLabels = [NSArray arrayWithObjects:@"3 AM", @"6 AM", @"9 AM", @"12 PM", @"3 PM",@"6 PM",@"9 PM", @"12 AM", nil];
     NSUInteger labelLocation = 0;
     NSMutableArray *customLabels = [NSMutableArray arrayWithCapacity:[xAxisLabels count]];
     for (NSNumber *tickLocation in customTickLocations)
@@ -497,6 +502,7 @@
     y.title = @"Heart Rate";
     y.titleTextStyle = axisTitleStyle;
     y.titleOffset = -50.0f;
+    axisLineStyle.lineColor = [CPTColor redColor];
     y.axisLineStyle = axisLineStyle;
     y.majorGridLineStyle = gridLineStyle;
     y.labelingPolicy = CPTAxisLabelingPolicyNone;
@@ -538,6 +544,8 @@
     y.majorTickLocations = yMajorLocations;
     y.minorTickLocations = yMinorLocations;
     
+    CPTPlotRange *yAxisRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(yMinPS) length:CPTDecimalFromUnsignedInteger(yMax)];
+    y.visibleRange=yAxisRange;
     
     
     
@@ -549,6 +557,7 @@
     y2.title = @"Skin Response";
     y2.titleTextStyle = axisTitleStyle;
     y2.titleOffset = -50.0f;
+    axisLineStyle.lineColor = [CPTColor blueColor];
     y2.axisLineStyle = axisLineStyle;
     y2.majorGridLineStyle = nil;
     y2.labelingPolicy = CPTAxisLabelingPolicyNone;
@@ -558,6 +567,7 @@
     y2.majorTickLength = 4.0f;
     y2.minorTickLength = 2.0f;
     y2.tickDirection = CPTSignPositive;
+
     
     NSMutableSet *y2Labels = [NSMutableSet set];
     NSMutableSet *y2MajorLocations = [NSMutableSet set];
@@ -588,6 +598,9 @@
     y2.axisLabels = y2Labels;
     y2.majorTickLocations = y2MajorLocations;
     y2.minorTickLocations = y2MinorLocations;
+    
+    CPTPlotRange *y2AxisRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(y2MinPS) length:CPTDecimalFromUnsignedInteger(y2Max)];
+    y2.visibleRange=y2AxisRange;
 
         
     self.hostView.hostedGraph.axisSet.axes = [NSArray arrayWithObjects:x, y, y2, nil];
@@ -595,18 +608,6 @@
 
 
 #pragma mark - Buttons
-
-- (IBAction)refreshButtonAction:(id)sender
-{
-    self.refreshButtonOutlet.backgroundColor=[UIColor whiteColor];
-    self.refreshButtonOutlet.selected=TRUE;
-    
-    [self refreshOnReceiving];
-    
-    self.refreshButtonOutlet.selected=FALSE;
-    self.refreshButtonOutlet.backgroundColor=[UIColor scrollViewTexturedBackgroundColor];
-    
-}
 
 - (IBAction)connectButtonAction:(id)sender
 {
@@ -627,7 +628,7 @@
     [_tableView reloadData];
     [self setPlotData];
     [self initPlot];
-
+    [self.view setNeedsDisplay];
 }
 
 

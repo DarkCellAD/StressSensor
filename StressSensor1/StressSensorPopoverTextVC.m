@@ -32,6 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     _noteView.text = _currentNotes;
     NSLog(@"%@",_currentNotes);
 

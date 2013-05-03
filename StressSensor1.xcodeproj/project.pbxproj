@@ -35,6 +35,7 @@
 		F0F5DF19171CCF95005EA046 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F5DF18171CCF95005EA046 /* first@2x.png */; };
 		F0F5DF1E171CCF95005EA046 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F5DF1D171CCF95005EA046 /* second.png */; };
 		F0F5DF20171CCF95005EA046 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F5DF1F171CCF95005EA046 /* second@2x.png */; };
+		F0F69C80173415DE00E78A61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F69C7F173415DE00E78A61 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +155,7 @@
 		F0F5DF18171CCF95005EA046 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		F0F5DF1D171CCF95005EA046 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		F0F5DF1F171CCF95005EA046 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		F0F69C7F173415DE00E78A61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F69C80173415DE00E78A61 /* AudioToolbox.framework in Frameworks */,
 				F0958427171F734F00788DEC /* CoreData.framework in Frameworks */,
 				F0958425171F732300788DEC /* QuartzCore.framework in Frameworks */,
 				F0958423171F72AB00788DEC /* CoreBluetooth.framework in Frameworks */,
@@ -348,6 +351,7 @@
 		F0F5DEF7171CCF95005EA046 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0F69C7F173415DE00E78A61 /* AudioToolbox.framework */,
 				F0AF149D172DDB3E00FDC18B /* BLE_Framework */,
 				F0958426171F734F00788DEC /* CoreData.framework */,
 				F0958424171F732200788DEC /* QuartzCore.framework */,
