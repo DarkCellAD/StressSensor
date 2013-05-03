@@ -107,6 +107,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnect) name:@"didConnect" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnect) name:@"didDisconnect" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshOnReceiving) name:@"didReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnect) name:@"didNotConnect" object:nil];
+    
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connecting" forState:UIControlStateSelected];
     
@@ -438,7 +440,7 @@
     
     // 2 - Get axis set
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
-    CPTXYPlotSpace *plotSpaceHR = (CPTXYPlotSpace *) [self.hostView.hostedGraph plotSpaceAtIndex:0];
+    //CPTXYPlotSpace *plotSpaceHR = (CPTXYPlotSpace *) [self.hostView.hostedGraph plotSpaceAtIndex:0];
     CPTXYPlotSpace *plotSpaceSR = (CPTXYPlotSpace *) [self.hostView.hostedGraph plotSpaceAtIndex:1];
     
         
@@ -619,6 +621,7 @@
 
 - (IBAction)editButton:(id)sender
 {
+    
     [self performSegueWithIdentifier:@"notePopover" sender:sender];
 }
 
@@ -785,6 +788,7 @@
         [notePopover dismissPopoverAnimated:YES];
         notePopover2=nil;
         
+        
         currentDayStress.notes=notes;
         
         StressSensorAppDelegate *appDelegate = (StressSensorAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -794,6 +798,7 @@
         [_tableView beginUpdates];
         [_tableView endUpdates];
         [self adjustNoteTextView];
+        [self.view setNeedsDisplay];
 
         
     }

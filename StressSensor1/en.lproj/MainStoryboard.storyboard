@@ -20,7 +20,6 @@
                                             <constraint firstAttribute="width" constant="111" type="user" id="yZs-vE-i54"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Connecting">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,7 +113,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVc-tK-HkK">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVc-tK-HkK" customClass="StressSensorEditButton">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" type="user" id="TGd-dt-SEz"/>
                                                         <constraint firstAttribute="height" constant="25" type="user" id="XDE-ci-RHD"/>
@@ -287,6 +286,9 @@
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
+        </class>
+        <class className="StressSensorEditButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StressSensorEditButton.h"/>
         </class>
         <class className="StressSensorPopoverTextVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StressSensorPopoverTextVC.h"/>

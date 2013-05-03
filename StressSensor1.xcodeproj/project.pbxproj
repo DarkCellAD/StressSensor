@@ -36,6 +36,14 @@
 		F0F5DF1E171CCF95005EA046 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F5DF1D171CCF95005EA046 /* second.png */; };
 		F0F5DF20171CCF95005EA046 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F5DF1F171CCF95005EA046 /* second@2x.png */; };
 		F0F69C80173415DE00E78A61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F69C7F173415DE00E78A61 /* AudioToolbox.framework */; };
+		F0F69C821734229F00E78A61 /* StressSense-Button72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C811734229F00E78A61 /* StressSense-Button72x72.png */; };
+		F0F69C84173422A700E78A61 /* StressSense-Button144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C83173422A700E78A61 /* StressSense-Button144x144.png */; };
+		F0F69C86173422B600E78A61 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C85173422B600E78A61 /* Default-Portrait~ipad.png */; };
+		F0F69C88173422BA00E78A61 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C87173422BA00E78A61 /* Default-Portrait@2x~ipad.png */; };
+		F0F69C8A173422C100E78A61 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C89173422C100E78A61 /* Default-Landscape@2x~ipad.png */; };
+		F0F69C8C173422C500E78A61 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C8B173422C500E78A61 /* Default-Landscape~ipad.png */; };
+		F0F69C901734361F00E78A61 /* alarmSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F0F69C8F1734361F00E78A61 /* alarmSound.wav */; };
+		F0F69C9317343BC400E78A61 /* StressSensorEditButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F69C9217343BC400E78A61 /* StressSensorEditButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,7 +145,7 @@
 		F0AF7DE01720E46000901983 /* StressSensorDayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorDayVC.m; sourceTree = "<group>"; };
 		F0AF7DEB1721D5A000901983 /* MinuteStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinuteStress.h; sourceTree = "<group>"; };
 		F0AF7DEC1721D5A000901983 /* MinuteStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinuteStress.m; sourceTree = "<group>"; };
-		F0F5DEF5171CCF95005EA046 /* StressSensor1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressSensor1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0F5DEF5171CCF95005EA046 /* Stress Sense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stress Sense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F5DEF8171CCF95005EA046 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0F5DEFA171CCF95005EA046 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0F5DEFC171CCF95005EA046 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,6 +164,15 @@
 		F0F5DF1D171CCF95005EA046 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		F0F5DF1F171CCF95005EA046 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		F0F69C7F173415DE00E78A61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F0F69C811734229F00E78A61 /* StressSense-Button72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StressSense-Button72x72.png"; path = "../StressSense-Button72x72.png"; sourceTree = "<group>"; };
+		F0F69C83173422A700E78A61 /* StressSense-Button144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StressSense-Button144x144.png"; path = "../StressSense-Button144x144.png"; sourceTree = "<group>"; };
+		F0F69C85173422B600E78A61 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		F0F69C87173422BA00E78A61 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		F0F69C89173422C100E78A61 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		F0F69C8B173422C500E78A61 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		F0F69C8F1734361F00E78A61 /* alarmSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = alarmSound.wav; path = ../alarmSound.wav; sourceTree = "<group>"; };
+		F0F69C9117343BC400E78A61 /* StressSensorEditButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorEditButton.h; sourceTree = "<group>"; };
+		F0F69C9217343BC400E78A61 /* StressSensorEditButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorEditButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +204,13 @@
 				F0F5DF0A171CCF95005EA046 /* Default.png */,
 				F0F5DF0C171CCF95005EA046 /* Default@2x.png */,
 				F0F5DF0E171CCF95005EA046 /* Default-568h@2x.png */,
+				F0F69C8B173422C500E78A61 /* Default-Landscape~ipad.png */,
+				F0F69C89173422C100E78A61 /* Default-Landscape@2x~ipad.png */,
+				F0F69C87173422BA00E78A61 /* Default-Portrait@2x~ipad.png */,
+				F0F69C85173422B600E78A61 /* Default-Portrait~ipad.png */,
+				F0F69C83173422A700E78A61 /* StressSense-Button144x144.png */,
+				F0F69C811734229F00E78A61 /* StressSense-Button72x72.png */,
+				F0F69C8F1734361F00E78A61 /* alarmSound.wav */,
 			);
 			name = "Images, logos, etc";
 			sourceTree = "<group>";
@@ -211,6 +235,8 @@
 				F0AF14D41732D22000FDC18B /* StressSensorTVCellText.m */,
 				F0AF7DDC1720E12C00901983 /* StressSensorConnectButton.h */,
 				F0AF7DDD1720E12C00901983 /* StressSensorConnectButton.m */,
+				F0F69C9117343BC400E78A61 /* StressSensorEditButton.h */,
+				F0F69C9217343BC400E78A61 /* StressSensorEditButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -343,7 +369,7 @@
 		F0F5DEF6171CCF95005EA046 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0F5DEF5171CCF95005EA046 /* StressSensor1.app */,
+				F0F5DEF5171CCF95005EA046 /* Stress Sense.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,7 +431,7 @@
 			);
 			name = StressSensor1;
 			productName = StressSensor1;
-			productReference = F0F5DEF5171CCF95005EA046 /* StressSensor1.app */;
+			productReference = F0F5DEF5171CCF95005EA046 /* Stress Sense.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -449,6 +475,13 @@
 				F0F5DF19171CCF95005EA046 /* first@2x.png in Resources */,
 				F0F5DF1E171CCF95005EA046 /* second.png in Resources */,
 				F0F5DF20171CCF95005EA046 /* second@2x.png in Resources */,
+				F0F69C821734229F00E78A61 /* StressSense-Button72x72.png in Resources */,
+				F0F69C84173422A700E78A61 /* StressSense-Button144x144.png in Resources */,
+				F0F69C86173422B600E78A61 /* Default-Portrait~ipad.png in Resources */,
+				F0F69C88173422BA00E78A61 /* Default-Portrait@2x~ipad.png in Resources */,
+				F0F69C8A173422C100E78A61 /* Default-Landscape@2x~ipad.png in Resources */,
+				F0F69C8C173422C500E78A61 /* Default-Landscape~ipad.png in Resources */,
+				F0F69C901734361F00E78A61 /* alarmSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +504,7 @@
 				F0AF15101733022E00FDC18B /* DayStress.m in Sources */,
 				F0AF15161733026B00FDC18B /* MonthStress.m in Sources */,
 				F010677C17335F3900FBFF79 /* StressSensorPopoverTextVC.m in Sources */,
+				F0F69C9317343BC400E78A61 /* StressSensorEditButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +600,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Stress Sense";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -583,7 +617,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Stress Sense";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

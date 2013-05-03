@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *mainPlotView;
 
+
+
 @property (strong, nonatomic) IBOutlet StressSensorConnectButton *connectButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 

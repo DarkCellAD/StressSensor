@@ -15,6 +15,7 @@
 @implementation StressSensorAppDelegate
 {
     BOOL databaseExisting;
+    SystemSoundID discAlarm;
 }
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -32,7 +33,13 @@
     [bleShield controlSetup:1];
     bleShield.delegate = self;
     
+
+    NSURL *discAlarmURL = [[NSBundle mainBundle] URLForResource:@"alarmSound"
+                                              withExtension:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)discAlarmURL, &discAlarm);
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(BLEShieldScan) name:@"shouldConnect" object:nil];
+    
         
     return YES;
 }
@@ -291,13 +298,12 @@
 
 - (void) bleDidDisconnect
 {
-    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    AudioServicesPlayAlertSound(discAlarm);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didDisconnect" object:self];
 }
 
 -(void) bleDidConnect
 {
-    NSLog(@"didConnect called");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didConnect" object:self];
 }
 
@@ -317,7 +323,7 @@
     
     [bleShield findBLEPeripherals:3];
     
-    [NSTimer scheduledTimerWithTimeInterval:(float)3.0 target:self selector:@selector(connectionTimer:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:(float)5.0 target:self selector:@selector(connectionTimer:) userInfo:nil repeats:NO];
     
 }
 
@@ -329,7 +335,7 @@
     }
     else
     {
-        [self bleDidDisconnect];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didNotConnect" object:self];
     }
 }
 
