@@ -12,7 +12,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"Coder");
+    //NSLog(@"Coder");
     if (!(self = [super initWithCoder:aDecoder]))
         return nil;
 

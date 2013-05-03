@@ -24,6 +24,7 @@
 
 - (IBAction)refreshButtonAction:(id)sender;
 - (IBAction)connectButtonAction:(id)sender;
+- (IBAction)editButton:(id)sender;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F010677C17335F3900FBFF79 /* StressSensorPopoverTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F010677B17335F3900FBFF79 /* StressSensorPopoverTextVC.m */; };
 		F0958423171F72AB00788DEC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958422171F72AB00788DEC /* CoreBluetooth.framework */; };
 		F0958425171F732300788DEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958424171F732200788DEC /* QuartzCore.framework */; };
 		F0958427171F734F00788DEC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0958426171F734F00788DEC /* CoreData.framework */; };
@@ -19,9 +20,6 @@
 		F0AF7DDB1720D87100901983 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AF7DDA1720D87100901983 /* libCorePlot-CocoaTouch.a */; };
 		F0AF7DDE1720E12C00901983 /* StressSensorConnectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DDD1720E12C00901983 /* StressSensorConnectButton.m */; };
 		F0AF7DE11720E46000901983 /* StressSensorDayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DE01720E46000901983 /* StressSensorDayVC.m */; };
-		F0AF7DE61720E54500901983 /* StressSensorFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DE31720E54400901983 /* StressSensorFirstViewController.m */; };
-		F0AF7DE71720E54500901983 /* StressSensorSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DE51720E54400901983 /* StressSensorSecondViewController.m */; };
-		F0AF7DEA1721C53A00901983 /* StressSensorTestData.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DE91721C53900901983 /* StressSensorTestData.m */; };
 		F0AF7DED1721D5A000901983 /* MinuteStress.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7DEC1721D5A000901983 /* MinuteStress.m */; };
 		F0F5DEF9171CCF95005EA046 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEF8171CCF95005EA046 /* UIKit.framework */; };
 		F0F5DEFB171CCF95005EA046 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F5DEFA171CCF95005EA046 /* Foundation.framework */; };
@@ -40,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F010677A17335F3900FBFF79 /* StressSensorPopoverTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorPopoverTextVC.h; sourceTree = "<group>"; };
+		F010677B17335F3900FBFF79 /* StressSensorPopoverTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorPopoverTextVC.m; sourceTree = "<group>"; };
 		F0958422171F72AB00788DEC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		F0958424171F732200788DEC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F0958426171F734F00788DEC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -134,12 +134,6 @@
 		F0AF7DDD1720E12C00901983 /* StressSensorConnectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorConnectButton.m; sourceTree = "<group>"; };
 		F0AF7DDF1720E46000901983 /* StressSensorDayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorDayVC.h; sourceTree = "<group>"; };
 		F0AF7DE01720E46000901983 /* StressSensorDayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorDayVC.m; sourceTree = "<group>"; };
-		F0AF7DE21720E54400901983 /* StressSensorFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorFirstViewController.h; sourceTree = "<group>"; };
-		F0AF7DE31720E54400901983 /* StressSensorFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorFirstViewController.m; sourceTree = "<group>"; };
-		F0AF7DE41720E54400901983 /* StressSensorSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorSecondViewController.h; sourceTree = "<group>"; };
-		F0AF7DE51720E54400901983 /* StressSensorSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorSecondViewController.m; sourceTree = "<group>"; };
-		F0AF7DE81721C53900901983 /* StressSensorTestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StressSensorTestData.h; sourceTree = "<group>"; };
-		F0AF7DE91721C53900901983 /* StressSensorTestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressSensorTestData.m; sourceTree = "<group>"; };
 		F0AF7DEB1721D5A000901983 /* MinuteStress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinuteStress.h; sourceTree = "<group>"; };
 		F0AF7DEC1721D5A000901983 /* MinuteStress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinuteStress.m; sourceTree = "<group>"; };
 		F0F5DEF5171CCF95005EA046 /* StressSensor1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressSensor1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,12 +217,8 @@
 			children = (
 				F0AF7DDF1720E46000901983 /* StressSensorDayVC.h */,
 				F0AF7DE01720E46000901983 /* StressSensorDayVC.m */,
-				F0AF7DE81721C53900901983 /* StressSensorTestData.h */,
-				F0AF7DE91721C53900901983 /* StressSensorTestData.m */,
-				F0AF7DE21720E54400901983 /* StressSensorFirstViewController.h */,
-				F0AF7DE31720E54400901983 /* StressSensorFirstViewController.m */,
-				F0AF7DE41720E54400901983 /* StressSensorSecondViewController.h */,
-				F0AF7DE51720E54400901983 /* StressSensorSecondViewController.m */,
+				F010677A17335F3900FBFF79 /* StressSensorPopoverTextVC.h */,
+				F010677B17335F3900FBFF79 /* StressSensorPopoverTextVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -470,15 +460,13 @@
 				F0AF7D871720D49700901983 /* StressDatabase.xcdatamodeld in Sources */,
 				F0AF7DDE1720E12C00901983 /* StressSensorConnectButton.m in Sources */,
 				F0AF7DE11720E46000901983 /* StressSensorDayVC.m in Sources */,
-				F0AF7DE61720E54500901983 /* StressSensorFirstViewController.m in Sources */,
-				F0AF7DE71720E54500901983 /* StressSensorSecondViewController.m in Sources */,
-				F0AF7DEA1721C53A00901983 /* StressSensorTestData.m in Sources */,
 				F0AF7DED1721D5A000901983 /* MinuteStress.m in Sources */,
 				F0AF14A1172DDB3E00FDC18B /* BLE.m in Sources */,
 				F0AF14D51732D22000FDC18B /* StressSensorTVCellText.m in Sources */,
 				F0AF150D1732DB5500FDC18B /* StressSensorTVCellAverages.m in Sources */,
 				F0AF15101733022E00FDC18B /* DayStress.m in Sources */,
 				F0AF15161733026B00FDC18B /* MonthStress.m in Sources */,
+				F010677C17335F3900FBFF79 /* StressSensorPopoverTextVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

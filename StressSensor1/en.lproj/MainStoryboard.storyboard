@@ -80,7 +80,7 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="average Heartrate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-rM-yOS">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="250" type="user" id="6jq-7B-hx0"/>
+                                                        <constraint firstAttribute="width" constant="200" type="user" id="6jq-7B-hx0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,31 +118,50 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="average Heartrate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnh-Ow-RjJ">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="250" type="user" id="mN8-3o-Dlz"/>
+                                                        <constraint firstAttribute="width" constant="200" type="user" id="mN8-3o-Dlz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygd-Sl-LjJ">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygd-Sl-LjJ">
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="320" id="JZp-aZ-eLQ"/>
+                                                        <constraint firstAttribute="height" constant="33" type="user" id="44P-ms-nbm"/>
+                                                        <constraint firstAttribute="width" constant="320" type="user" id="JZp-aZ-eLQ"/>
                                                     </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVc-tK-HkK">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" type="user" id="TGd-dt-SEz"/>
+                                                        <constraint firstAttribute="height" constant="25" type="user" id="XDE-ci-RHD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editButton:" destination="2" eventType="touchUpInside" id="y8F-gx-fLc"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
-                                            <constraint firstItem="ygd-Sl-LjJ" firstAttribute="top" secondItem="wnh-Ow-RjJ" secondAttribute="top" type="default" id="HdH-s1-m2i"/>
-                                            <constraint firstItem="wnh-Ow-RjJ" firstAttribute="leading" secondItem="0TQ-4z-gSl" secondAttribute="leading" constant="60" id="LzB-89-kBW"/>
-                                            <constraint firstAttribute="centerY" secondItem="wnh-Ow-RjJ" secondAttribute="centerY" type="user" id="lw5-sa-KAx"/>
-                                            <constraint firstAttribute="centerY" secondItem="ygd-Sl-LjJ" secondAttribute="centerY" type="user" id="q3X-BO-S8B"/>
+                                            <constraint firstItem="QVc-tK-HkK" firstAttribute="leading" secondItem="ygd-Sl-LjJ" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="JMf-EL-7BV"/>
+                                            <constraint firstItem="wnh-Ow-RjJ" firstAttribute="leading" secondItem="0TQ-4z-gSl" secondAttribute="leading" constant="60" type="user" id="LzB-89-kBW"/>
+                                            <constraint firstItem="QVc-tK-HkK" firstAttribute="top" secondItem="0TQ-4z-gSl" secondAttribute="top" constant="10" type="user" id="Xjj-9T-ycl"/>
+                                            <constraint firstItem="ygd-Sl-LjJ" firstAttribute="top" secondItem="0TQ-4z-gSl" secondAttribute="top" constant="2" type="user" id="cbd-eJ-0Ma"/>
+                                            <constraint firstItem="wnh-Ow-RjJ" firstAttribute="top" secondItem="0TQ-4z-gSl" secondAttribute="top" constant="10" type="user" id="tVz-oy-Pg4"/>
                                             <constraint firstItem="ygd-Sl-LjJ" firstAttribute="leading" secondItem="wnh-Ow-RjJ" secondAttribute="trailing" constant="25" type="user" id="xyy-es-4RW"/>
                                         </constraints>
                                         <connections>
@@ -179,11 +198,73 @@
                         <outlet property="refreshButtonOutlet" destination="d2g-QG-51S" id="PjV-cS-mxX"/>
                         <outlet property="spinner" destination="nJ1-22-aWs" id="3Wx-j8-DRv"/>
                         <outlet property="tableView" destination="y3R-c1-e1m" id="V2s-7u-NT1"/>
+                        <segue destination="toS-pj-mvQ" kind="popover" identifier="notePopover" popoverAnchorView="y3R-c1-e1m" id="B5f-sl-qvJ">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3041" y="150"/>
+        </scene>
+        <!--Stress Sensor Popover TextVC-->
+        <scene sceneID="ntO-hf-AgG">
+            <objects>
+                <viewController id="toS-pj-mvQ" customClass="StressSensorPopoverTextVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jP1-Kf-FEj">
+                        <rect key="frame" x="0.0" y="20" width="600" height="500"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Write Your note for today..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cG-YP-zjR">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2C-X9-1eR" customClass="StressSensorConnectButton">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="2wM-OB-Hqh"/>
+                                    <constraint firstAttribute="width" constant="57" id="KNE-cN-vBT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonAction:" destination="toS-pj-mvQ" eventType="touchUpInside" id="sd4-hv-bZJ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8el-AL-J8g">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="7cG-YP-zjR" firstAttribute="top" secondItem="jP1-Kf-FEj" secondAttribute="top" constant="9" id="9b8-BU-QlS"/>
+                            <constraint firstItem="k2C-X9-1eR" firstAttribute="top" secondItem="jP1-Kf-FEj" secondAttribute="top" constant="8" id="LkX-gS-Vgh"/>
+                            <constraint firstItem="7cG-YP-zjR" firstAttribute="leading" secondItem="jP1-Kf-FEj" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="SEx-C3-d8j"/>
+                            <constraint firstItem="8el-AL-J8g" firstAttribute="leading" secondItem="jP1-Kf-FEj" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="YDJ-6f-MSx"/>
+                            <constraint firstAttribute="trailing" secondItem="8el-AL-J8g" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="ay4-dh-hsn"/>
+                            <constraint firstItem="8el-AL-J8g" firstAttribute="top" secondItem="jP1-Kf-FEj" secondAttribute="top" constant="50" type="user" id="dOf-D6-TGy"/>
+                            <constraint firstItem="k2C-X9-1eR" firstAttribute="leading" secondItem="7cG-YP-zjR" secondAttribute="trailing" constant="250" type="user" id="dl1-Wp-R7U"/>
+                            <constraint firstAttribute="bottom" secondItem="8el-AL-J8g" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="kmU-2W-NEi"/>
+                            <constraint firstItem="k2C-X9-1eR" firstAttribute="baseline" secondItem="7cG-YP-zjR" secondAttribute="baseline" type="default" id="uEW-xK-ma9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="noteView" destination="8el-AL-J8g" id="iYj-bL-0eO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Qr-N7-QSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3918" y="150"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">

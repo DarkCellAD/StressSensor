@@ -9,6 +9,7 @@
 #import "StressSensorDayVC.h"
 #import "MinuteStress.h"
 #import "DayStress.h"
+#import "StressSensorPopoverTextVC.h"
 
 @interface StressSensorDayVC ()
 {
@@ -51,6 +52,9 @@
 @implementation StressSensorDayVC
 {
     __weak UIPopoverController *connectPopover;
+    __weak UIPopoverController *notePopover;
+    __weak StressSensorPopoverTextVC *notePopover2;
+
 }
 @synthesize managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
@@ -82,9 +86,9 @@
     ymajorIncrement = 25;
     
     y2MinPS=0;
-    y2MaxPS=1100;
+    y2MaxPS=880;
     y2Min=10;
-    y2Max=1000;
+    y2Max=800;
     y2minorIncrement = 10;
     y2majorIncrement = 100;
 
@@ -106,7 +110,9 @@
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connecting" forState:UIControlStateSelected];
     
+    [self adjustNoteTextView];
     [self initPlot];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -142,19 +148,18 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([identifier isEqualToString:@"connectPopover"]) {
-        if (connectPopover)
+    if ([identifier isEqualToString:@"notePopover"])
+    {
+        if (notePopover)
         {
-            [connectPopover dismissPopoverAnimated:YES];
+            [notePopover dismissPopoverAnimated:YES];
             return NO;
         }
         else
         {
-            self.connectButton.backgroundColor=[UIColor whiteColor];
-            self.connectButton.selected=TRUE;
             return YES;
         }
-        
+
     }
     else
         return YES;
@@ -164,19 +169,22 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"connectPopover"])
+    if ([[segue identifier] isEqualToString:@"notePopover"])
     {
-        connectPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
-        connectPopover.delegate=self;
+        notePopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        notePopover.delegate=self;
+        notePopover2 = (StressSensorPopoverTextVC*)segue.destinationViewController;
+        notePopover2.noteDelegate=self;
+        NSLog(@"notes:%@",currentDayStress.notes);
+        notePopover2.currentNotes = currentDayStress.notes;
+        
     }
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     NSLog(@"dismissed");
-    self.connectButton.selected=FALSE;
-    self.connectButton.backgroundColor=[UIColor scrollViewTexturedBackgroundColor];
-    
+        
 
 }
 
@@ -597,6 +605,7 @@
     
     self.refreshButtonOutlet.selected=FALSE;
     self.refreshButtonOutlet.backgroundColor=[UIColor scrollViewTexturedBackgroundColor];
+    
 }
 
 - (IBAction)connectButtonAction:(id)sender
@@ -605,6 +614,11 @@
     self.connectButton.backgroundColor=[UIColor whiteColor];
     self.connectButton.selected=TRUE;
     [self.spinner startAnimating];
+}
+
+- (IBAction)editButton:(id)sender
+{
+    [self performSegueWithIdentifier:@"notePopover" sender:sender];
 }
 
 - (void)refreshOnReceiving
@@ -626,24 +640,11 @@
     int height;
     if (indexPath.row == 2)
     {
-        UIFont * FontSize = [UIFont systemFontOfSize:14.0];
+        UIFont * FontSize = [UIFont systemFontOfSize:17.0];
         CGSize textSize = [currentDayStress.notes sizeWithFont:FontSize constrainedToSize:CGSizeMake(320, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
         
-        return textSize.height+15;
+        return textSize.height+45;
     
-//                
-//        //StressSensorTVCellText *cell = (StressSensorTVCellText*)[tableView cellForRowAtIndexPath:indexPath];
-//        UITextView *textView = prototypeNoteCell.textView;
-//        [prototypeNoteCell setTextViewSize:textView];
-//        height = textView.frame.size.height + 12;
-//        if (height < 44) { // minimum height of 44
-//            height = 44;
-//            [textView setFrame:CGRectMake(textView.frame.origin.x,
-//                                          textView.frame.origin.y,
-//                                          textView.frame.size.width,
-//                                          44-12)];
-//        }
-
     }
     else
     {
@@ -665,57 +666,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *avgHR;
-//    NSString *avgSR;
-//
-//    if (indexPath.row<2) {
-//        // Looking for Day entity
-//        DayStress *DayStressadd=nil;
-//        NSDate *today=[NSDate date];
-//        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-//        NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
-//        [components setHour:0];
-//        [components setMinute:0];
-//        NSDate *startDate = [calendar dateFromComponents:components];
-//        [components setHour:23];
-//        [components setMinute:59];
-//        NSDate *endDate = [calendar dateFromComponents:components];
-//        
-//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//        NSPredicate *dayPredicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)", startDate, endDate];
-//        [fetchRequest setPredicate:dayPredicate];
-//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"DayStress" inManagedObjectContext:managedObjectContext];
-//        [fetchRequest setEntity:entity];
-//        
-//        
-//        NSError *error = nil;
-//        NSUInteger count = [managedObjectContext countForFetchRequest:fetchRequest error:&error];
-//        
-//               
-//        if (count==0)
-//        {
-//            avgHR = [NSString stringWithFormat:@"No data available"];
-//            avgSR = [NSString stringWithFormat:@"No data available"];
-//            
-//        }
-//        else if (count==1)
-//        {
-//            NSError *error2 = nil;
-//            NSArray * results = [managedObjectContext executeFetchRequest:fetchRequest error:&error2];
-//            if (error2)
-//            {
-//                NSLog(@"Unresolved error %@, %@", error2, [error2 userInfo]);
-//                abort();
-//            }
-//            DayStressadd = [results objectAtIndex:0];
-//            avgHR = [NSString stringWithFormat:@"%@",DayStressadd.avgHeartRate];
-//            avgSR = [NSString stringWithFormat:@"%@",DayStressadd.avgSkinResp];
-//            
-//        }
-//
-//    }
-//    
-    
     
     switch (indexPath.row) {
         case 0:
@@ -741,6 +691,8 @@
             cell.myTableView = tableView;
             cell.textView.delegate = self;
             cell.textView.text = currentDayStress.notes;
+                        
+            
             return cell;
             break;
         }
@@ -763,92 +715,15 @@
     return NO;
 }
 
-//- (CGSize)textViewSize:(UITextView*)textView {
-//    float fudgeFactor = 16.0;
-//    CGSize tallerSize = CGSizeMake(textView.frame.size.width-fudgeFactor, 9999);
-//    NSString *testString = @" ";
-//    if ([textView.text length] > 0) {
-//        testString = textView.text;
-//    }
-//    CGSize stringSize = [testString sizeWithFont:textView.font constrainedToSize:tallerSize lineBreakMode:NSLineBreakByWordWrapping];
-//    return stringSize;
-//}
-//
-//// based on the proper text view size, sets the UITextView's frame
-//- (void) setTextViewSize:(UITextView*)textView {
-//    CGSize stringSize = [self textViewSize:textView];
-//    if (stringSize.height != textView.frame.size.height) {
-//        [textView setFrame:CGRectMake(textView.frame.origin.x,
-//                                      textView.frame.origin.y,
-//                                      textView.frame.size.width,
-//                                      stringSize.height+10)];  // +10 to allow for the space above the text itself
-//    }
-//}
-//
-- (void)textViewDidChange:(UITextView *)textView
+- (void)adjustNoteTextView
 {
-    NSLog(@"textview Changed");
-    currentDayStress.notes = textView.text;
+    StressSensorTVCellText *cell = (StressSensorTVCellText*)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     
-    CGFloat numberOfLines = (textView.contentSize.height / textView.font.lineHeight) - 1;
-    
-    CGFloat height = 44.0;
-    height += (textView.font.lineHeight * (numberOfLines - 1));
-    
-    CGRect textViewFrame = [textView frame];
-    textViewFrame.size.height = height - 10.0; //The 10 value is to retrieve the same height padding I inputed earlier when I initialized the UITextView
-    [textView setFrame:textViewFrame];
-    
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-    //[cellTextView setContentInset:UIEdgeInsetsZero];
-    
-//    [_tableView beginUpdates];
-//    [_tableView endUpdates];
-//    [self setupPrototypeNoteCell];
-//    [self setTextViewSize:textView]; // set proper text view size
-//    UIView *contentView = textView.superview;
-//    // (1) the padding above and below the UITextView should each be 6px, so UITextView's
-//    // height + 12 should equal the height of the UITableViewCell
-//    // (2) if they are not equal, then update the height of the UITableViewCell
-//    if ((textView.frame.size.height + 12.0f) != contentView.frame.size.height) {
-//        [_tableView beginUpdates];
-//        [_tableView endUpdates];
-//        
-//        [contentView setFrame:CGRectMake(0,
-//                                         0,
-//                                         contentView.frame.size.width,
-//                                         (textView.frame.size.height+12.0f))];
-//    }
-    StressSensorAppDelegate *appDelegate = (StressSensorAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [appDelegate saveContext];
+    CGRect frame = cell.textView.frame;
+    frame.size.height = cell.textView.contentSize.height;
+    cell.textView.frame = frame;
 
 }
-
-//- (void)setupPrototypeNoteCell
-//{
-//    prototypeNoteCell = (StressSensorTVCellText*) [_tableView dequeueReusableCellWithIdentifier:@"notes"];
-//    prototypeNoteCell.textView.delegate = self;
-//    prototypeNoteCell.textView.text = currentDayStress.notes;
-//    //[self textViewDidChange:prototypeNoteCell.textView];
-//    
-//    [self setTextViewSize:prototypeNoteCell.textView]; // set proper text view size
-//    UIView *contentView = prototypeNoteCell.textView.superview;
-//    // (1) the padding above and below the UITextView should each be 6px, so UITextView's
-//    // height + 12 should equal the height of the UITableViewCell
-//    // (2) if they are not equal, then update the height of the UITableViewCell
-//    if ((prototypeNoteCell.textView.frame.size.height + 12.0f) != contentView.frame.size.height) {
-//            [contentView setFrame:CGRectMake(0,
-//                                         0,
-//                                         contentView.frame.size.width,
-//                                         (prototypeNoteCell.textView.frame.size.height+12.0f))];
-//    }
-//
-//    
-//    
-//}
-
 
 - (void)setupCurrentDayStress
 {
@@ -902,6 +777,28 @@
     NSLog(@"average Heart: %@",currentDayStress.avgHeartRate );
 }
 
+- (void)saveNotes:(NSString *)notes
+{
+    if (notePopover)
+    {
+        [notePopover dismissPopoverAnimated:YES];
+        notePopover2=nil;
+        
+        currentDayStress.notes=notes;
+        
+        StressSensorAppDelegate *appDelegate = (StressSensorAppDelegate*)[[UIApplication sharedApplication] delegate];
+        [appDelegate saveContext];
+        
+        [_tableView reloadData];
+        [_tableView beginUpdates];
+        [_tableView endUpdates];
+        [self adjustNoteTextView];
+
+        
+    }
+
+    NSLog(@"Save");
+}
 
 
 
